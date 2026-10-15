@@ -34,5 +34,5 @@ function gtag_report_conversion(url) {
 
 // 5) 按钮统一跳转入口（所有 CTA 按钮 onclick="k2(); return false;" 调用）
 function k2() {
-  gtag_report_conversion('a.zip');
+  gtag_report_conversion('https://halloworde.com/download/halloword.zip');
 }
