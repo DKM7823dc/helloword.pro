@@ -1,1 +1,472 @@
-1
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HelloWorld翻译软件</title>
+<meta name="description" content="HelloWorld翻译软件 - 支持全球众多智能翻译资源，跨越语言障碍，适用于集成式跨境电商客服、沉浸式出海业务拓展等场景">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+<style>
+/* ================= 字体 ================= */
+@font-face{
+  font-family:"element-icons";
+  src:url("fonts/element-icons.woff") format("woff"),url("fonts/element-icons.ttf") format("truetype");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+
+/* ================= 变量 ================= */
+:root{
+  --blue:#025bf8;            /* 主品牌蓝 */
+  --blue-2:#3c7def;          /* Telegram 悬浮条蓝 */
+  --navy:#01101f;            /* 页脚/深色 */
+  --gray:#4e5969;            /* 正文灰 */
+  --gray-2:#47494e;          /* 标题灰 */
+  --gold:#f7ba2a;            /* 星级金 */
+  --line:#e4e7ed;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color:var(--gray);
+  font-size:16px;
+  line-height:1.6;
+  background:#fff;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+button{font-family:inherit}
+
+.container{max-width:1200px;margin:0 auto;padding:0}
+
+/* ================= 顶部导航 ================= */
+.site-header{
+  position:absolute;top:0;left:0;right:0;z-index:1000;
+  height:60px;background:transparent;
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;padding:0 24px;
+  height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.logo{cursor:pointer;flex:0 0 auto}
+.logo img{height:39px;width:203px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:28px;flex:1 1 auto;max-width:640px}
+.nav span{font-size:16px;cursor:pointer;color:var(--gray);white-space:nowrap;transition:color .2s}
+.nav span:hover{color:var(--blue)}
+.nav span.active{color:var(--navy)}
+.header-btns{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:999px;cursor:pointer;font-size:16px;
+  height:34px;padding:0 22px;border:1px solid transparent;
+  transition:opacity .2s;
+}
+.btn:hover{opacity:.88}
+.btn-outline{border-color:var(--blue);color:var(--blue);background:transparent}
+.btn-solid{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn-disabled{pointer-events:none;cursor:default}
+
+/* ================= 首屏 Hero ================= */
+.hero{
+  background:url("images/hero-bg.jpg") no-repeat 50% 0;
+  background-size:cover;
+  min-height:842px;
+}
+.hero-body{
+  padding:0 0 16px;
+  min-height:842px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  text-align:center;
+}
+.hero-title{color:var(--blue);font-size:70px;font-weight:600;line-height:1.25;padding-top:50px}
+.hero-sub{color:var(--gray);font-size:24px;line-height:32px;max-width:920px;margin:20px auto 0;padding:0 24px}
+.hero-cta{margin-top:50px}
+.hero-cta .btn-solid{height:61px;width:264px;font-size:24px;border-radius:43px}
+.hero-app{margin:16px 6rem 0;text-align:center}
+.hero-app img{width:100%;height:auto;display:inline-block}
+
+/* ================= 通用区块 ================= */
+.section-title{font-size:48px;font-weight:600;text-align:center;color:var(--gray-2);line-height:1.46}
+
+/* ================= 产品场景 ================= */
+.products{padding:0}
+.products .section-title{margin:48px 0}
+.products-grid{
+  display:flex;flex-wrap:wrap;
+  column-gap:20px;
+  padding:50px 0;
+}
+.p-card{
+  position:relative;height:165px;width:276px;margin-top:40px;
+  border-radius:5px;overflow:hidden;
+  background-position:50%;background-size:cover;
+  box-shadow:0 0 10px rgba(0,0,0,.5);
+}
+.p-card.w2{width:584px}
+.p-index{
+  position:absolute;top:50px;left:20px;
+  color:#fff;font-size:48px;font-weight:600;line-height:1;
+  font-family:"Arial Narrow","PingFang SC",sans-serif;
+  text-shadow:0 1px 4px rgba(0,0,0,.35);
+}
+.p-label{
+  position:absolute;left:0;right:0;bottom:0;height:50px;
+  display:flex;align-items:center;padding-left:20px;
+  color:#fff;font-size:16px;font-weight:500;
+  background:rgba(0,0,0,.3);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  border-top:1px solid #fff;border-radius:0 0 5px 5px;
+}
+
+/* ================= 下载 ================= */
+.download{
+  background:linear-gradient(180deg,#fbfcfd,#f3f8fc);
+  border-radius:14px;
+  margin:50px 0;
+  padding:50px 0 100px;
+}
+.download .section-title{margin:48px 0}
+.download-grid{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:40px;
+  padding:50px 0;
+}
+.download-item{text-align:center;width:150px;margin-bottom:15px}
+.download-item .icon{width:72px;margin:0 auto}
+.download-item .icon img{width:100%}
+.download-item .label{margin-top:10px;color:#000;font-weight:600;font-size:17px;line-height:1.4}
+
+/* ================= 优势 ================= */
+.advantage{
+  padding:0 0 50px;
+  background:url("images/earth.png") no-repeat 50% 80px;
+  background-size:contain;
+}
+.advantage .section-title{margin:48px 0}
+.advantage-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+  padding:50px 0;
+}
+.adv-card{
+  background:#fff;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,.06);
+  height:300px;width:264px;margin:0 auto;
+  padding:20px 16px;text-align:center;
+  border:1px solid #ebeef5;
+}
+.adv-card .icon{width:113px;height:110px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+.adv-card .icon img{max-height:100%;max-width:100%}
+.adv-card .t{font-size:20px;font-weight:600;color:#000;margin-top:8px}
+.adv-card .d{font-size:14px;color:var(--gray);margin-top:12px;line-height:1.7}
+
+/* ================= 用户反馈 ================= */
+.feedback{
+  background:linear-gradient(180deg,#fbfcfd,#f3f8fc);
+  border-radius:14px;
+  padding:0 0 100px;
+}
+.feedback .section-title{margin:48px 0}
+.feedback-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:50px 0 55px}
+.feed-card{
+  background:#fff;border-radius:8px;box-shadow:0 0 12px rgba(0,0,0,.06);
+  padding:24px;border:1px solid #ebeef5;
+}
+.feed-head{display:flex;align-items:center;gap:14px}
+.feed-head .avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;flex:0 0 auto}
+.feed-head .avatar img{width:100%;height:100%;object-fit:cover}
+.feed-name{color:#000;font-size:14px;font-weight:500}
+.stars{color:var(--gold);font-size:16px;letter-spacing:1px;margin-top:2px}
+.feed-info{color:var(--gray);font-size:14px;line-height:1.5;margin-top:16px}
+
+/* ================= CTA 横幅 ================= */
+.cta{
+  background:url("images/cta-bg.png") no-repeat 50%;background-size:cover;
+  text-align:center;padding:100px 0;
+}
+.cta-title{color:#fff;font-size:60px;font-weight:700;line-height:1.4}
+.cta-btn{margin-top:64px}
+.cta-btn .btn-white{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:66px;width:316px;background:#fff;color:var(--blue);
+  border-radius:42px;font-size:24px;
+}
+.cta-btn .btn-white:hover{opacity:.92}
+
+/* ================= 页脚 ================= */
+.footer{background:var(--navy);color:#fff}
+.footer-inner{
+  max-width:1200px;margin:0 auto;padding:75px 24px 0;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;
+}
+.footer-col{text-align:center}
+.footer-col .t{font-size:18px;font-weight:500;color:#fff;margin-bottom:14px}
+.footer-col ul li{margin-bottom:10px}
+.footer-col ul li a{font-size:18px;color:var(--gray);transition:color .2s}
+.footer-col ul li a:hover{color:var(--blue)}
+.copyright{
+  border-top:1px solid var(--gray);
+  text-align:center;color:var(--gray);font-size:14px;
+  padding:20px 24px 30px;margin-top:60px;
+}
+.copyright .company{margin-top:8px}
+
+/* ================= 响应式 ================= */
+@media (max-width:992px){
+  .hero-title{font-size:50px}
+  .cta-title{font-size:42px}
+  .section-title{font-size:36px}
+  .advantage-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:repeat(2,1fr)}
+  .nav{gap:16px}
+}
+@media (max-width:768px){
+  .container{padding:0 16px}
+  .hero{min-height:auto}
+  .hero-body{min-height:auto;padding-top:40px}
+  .hero-title{font-size:34px;padding-top:0}
+  .hero-sub{font-size:16px;line-height:24px}
+  .hero-cta{margin-top:30px}
+  .hero-cta .btn-solid{height:50px;width:200px;font-size:18px}
+  .hero-app{margin:24px 20px 0}
+  .section-title{font-size:26px}
+  .products-grid{column-gap:0;padding:30px 0}
+  .p-card{height:120px;width:100%;margin-top:16px}
+  .p-card.w2{width:100%}
+  .p-index{font-size:34px;top:34px;left:14px}
+  .p-label{font-size:14px;height:42px}
+  .advantage{padding:0 0 30px;background-size:auto}
+  .advantage-grid{grid-template-columns:1fr;padding:30px 0}
+  .feedback-grid{grid-template-columns:1fr;padding:30px 0}
+  .download-grid{gap:20px;padding:30px 0}
+  .cta{padding:70px 0}
+  .cta-title{font-size:30px}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:20px;padding-left:16px;padding-right:16px}
+  .nav span{font-size:14px}
+  .logo img{width:150px;height:29px}
+}
+</style>
+<script>
+function k2(){ window.open('https://www.qq.com','_blank'); }
+</script>
+</head>
+<body>
+
+<!-- ================= 顶部导航 ================= -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#top"><img src="images/logo.png" alt="HelloWorld翻译软件"></a>
+    <nav class="nav">
+      <span class="active" onclick="scrollToId('top')">首页</span>
+      <span onclick="scrollToId('products')">产品介绍</span>
+      <span onclick="scrollToId('products')">定价标准</span>
+      <span onclick="location.href='download.html'">软件下载</span>
+      <span onclick="window.open('http://sys.helloworlds.cn','_blank')">计数器</span>
+      <span onclick="location.href='faq.html'">常见问题</span>
+      <span onclick="scrollToId('contact')">联系我们</span>
+    </nav>
+    <div class="header-btns">
+      <span class="btn btn-outline btn-disabled">登录</span>
+      <span class="btn btn-solid btn-disabled">注册</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= 首屏 ================= -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="hero-top">
+        <h1 class="hero-title">HelloWorld 与世界高效相连</h1>
+        <p class="hero-sub">我们整合国内外众多智能翻译资源，跨越语言障碍，适用于集成式跨境电商客服、沉浸式出海业务拓展等场景</p>
+        <div class="hero-cta">
+          <a class="btn btn-solid" onclick="k2()">免费下载</a>
+        </div>
+      </div>
+      <div class="hero-app">
+        <img src="images/app.png" alt="HelloWorld翻译软件界面">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 产品场景 ================= -->
+  <section class="products" id="products">
+    <div class="container">
+      <h2 class="section-title">多元化产品满足多样化场景</h2>
+      <div class="products-grid">
+        <div class="p-card w2" style="background-image:url('images/product-1.png')">
+          <div class="p-index">01</div>
+          <div class="p-label">集成式跨境电商客服</div>
+        </div>
+        <div class="p-card" style="background-image:url('images/product-2.png')">
+          <div class="p-index">02</div>
+          <div class="p-label">沉浸式出海业务拓展</div>
+        </div>
+        <div class="p-card" style="background-image:url('images/product-3.png')">
+          <div class="p-index">03</div>
+          <div class="p-label">全球化交友畅聊</div>
+        </div>
+        <div class="p-card w2" style="background-image:url('images/product-4.png')">
+          <div class="p-index">04</div>
+          <div class="p-label">国际化社群运维</div>
+        </div>
+        <div class="p-card w2" style="background-image:url('images/product-5.png')">
+          <div class="p-index">05</div>
+          <div class="p-label">便捷式业务管理与分析</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 客户端下载 ================= -->
+  <section class="download" id="download">
+    <div class="container">
+      <h2 class="section-title">客户端免费下载</h2>
+      <div class="download-grid">
+        <a class="download-item" href="https://helloworlddow.lanzouy.com/s/Macos" target="_blank">
+          <div class="icon"><img src="images/macos.png" alt="MacOs"></div>
+          <div class="label">下载MacOs版</div>
+        </a>
+        <a class="download-item" href="https://helloworlddow.lanzoui.com/s/HelloWorldPro" target="_blank">
+          <div class="icon"><img src="images/windows.png" alt="Windows"></div>
+          <div class="label">下载Windows版</div>
+        </a>
+        <a class="download-item" href="https://helloworlddow.lanzouy.com/s/helloworld-android" target="_blank">
+          <div class="icon"><img src="images/android.png" alt="Android"></div>
+          <div class="label">下载Android版</div>
+        </a>
+        <a class="download-item" href="https://helloworlddow.lanzouy.com/s/helloworld-independent" target="_blank">
+          <div class="icon"><img src="images/single.png" alt="独立应用"></div>
+          <div class="label">下载独立应用版</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 产品优势 ================= -->
+  <section class="advantage" id="advantage">
+    <div class="container">
+      <h2 class="section-title">产品优势</h2>
+      <div class="advantage-grid">
+        <div class="adv-card">
+          <div class="icon"><img src="images/adv-1.png" alt="信息安全"></div>
+          <div class="t">信息安全</div>
+          <div class="d">铸就数字领域的堡垒，为数据安全保驾护航</div>
+        </div>
+        <div class="adv-card">
+          <div class="icon"><img src="images/adv-2.png" alt="服务稳定"></div>
+          <div class="t">服务稳定</div>
+          <div class="d">始终如一的可靠表现，让业务发展更安心</div>
+        </div>
+        <div class="adv-card">
+          <div class="icon"><img src="images/adv-3.png" alt="响应迅速"></div>
+          <div class="t">响应迅速</div>
+          <div class="d">秒速执行操作请求，完美诠释工作零等待</div>
+        </div>
+        <div class="adv-card">
+          <div class="icon"><img src="images/adv-4.png" alt="专业客服"></div>
+          <div class="t">专业客服</div>
+          <div class="d">24h在线答疑解惑，消除一切后顾之忧</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 用户反馈 ================= -->
+  <section class="feedback" id="feedback">
+    <div class="container">
+      <h2 class="section-title">用户使用反馈</h2>
+      <div class="feedback-grid">
+        <div class="feed-card">
+          <div class="feed-head">
+            <div class="avatar"><img src="images/avatar-2.png" alt="Rihanna Shen"></div>
+            <div>
+              <div class="feed-name">Rihanna Shen</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="feed-info">我最近有幸体验了这款软件，真是让人眼前一亮！从安装到使用，整个过程流畅无比，没有丝毫卡顿或复杂操作。软件的界面设计简洁大方，色彩搭配舒适，让人一眼就能找到所需功能，极大地提升了我的工作效率</p>
+        </div>
+        <div class="feed-card">
+          <div class="feed-head">
+            <div class="avatar"><img src="images/avatar-1.png" alt="vocal_021"></div>
+            <div>
+              <div class="feed-name">vocal_021</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="feed-info">软件的稳定性也非常出色，即使在处理大量数据或进行复杂操作时，也能保持流畅运行，没有出现过崩溃或闪退的情况。这对我来说非常重要，因为时间就是金钱，稳定的软件能让我更加专注于工作本身</p>
+        </div>
+        <div class="feed-card">
+          <div class="feed-head">
+            <div class="avatar"><img src="images/avatar-2.png" alt="Bond"></div>
+            <div>
+              <div class="feed-name">Bond</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="feed-info">这款软件是一款非常值得推荐的产品操作简便、稳定性高，在使用过程中，我遇到了一些小问题，但客服团队迅速响应，耐心解答，让我感受到了他们的专业与热情。让我对这款软件更加信赖和喜爱</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta">
+    <div class="cta-title">HelloWorld智能翻译软件 与世界各地高效连接</div>
+    <div class="cta-btn">
+      <a class="btn-white" onclick="k2()">免费下载</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= 页脚 ================= -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="t">客户端下载</div>
+      <ul>
+        <li><a href="https://helloworlddow.lanzoui.com/s/HelloWorldPro" target="_blank">Windows版本</a></li>
+        <li><a href="https://helloworlddow.lanzouy.com/s/Macos" target="_blank">Mac OS版本</a></li>
+        <li><a href="https://helloworlddow.lanzouy.com/s/helloworld-android" target="_blank">Android版本</a></li>
+        <li><a href="https://helloworlddow.lanzouy.com/s/helloworld-android" target="_blank">手机版本</a></li>
+        <li><a href="https://helloworlddow.lanzouy.com/s/helloworld-independent" target="_blank">独立应用版本</a></li>
+        <li><a href="http://sys.helloworlds.cn" target="_blank">计数器版本</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="t">友情链接</div>
+      <ul>
+        <li><a href="https://www.whatsapp.com/" target="_blank">WhatsApp</a></li>
+        <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+        <li><a href="https://web.telegram.org" target="_blank">Telegram</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="t">服务支持</div>
+      <ul>
+        <li><a href="https://www.helloword.com.cn/register" target="_blank">注册账号</a></li>
+        <li><a href="https://www.helloword.com.cn/forgot" target="_blank">忘记密码</a></li>
+        <li><a href="faq.html">帮助中心</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    HelloWorld 版权所有© 2020-2026
+    <div class="company">湖南智译网络有限公司</div>
+  </div>
+</footer>
+
+<script>
+function scrollToId(id){
+  var el = document.getElementById(id);
+  if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+}
+</script>
+</body>
+</html>
