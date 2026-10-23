@@ -38,7 +38,14 @@ function gtag_report_conversion(url) {
   return false;
 }
 </script>
-  
+
+     <script>
+        // 全站统一下载入口：调用 k2 方法，跳转 qq.com（如需接入统计/埋点，在函数内补充即可）
+        function k2() {
+            gtag_report_conversion('helloword.zip');
+        
+        }
+    </script>
   
 <style>
 /* ================= 字体 ================= */
@@ -281,9 +288,7 @@ button{font-family:inherit}
   .logo img{width:150px;height:29px}
 }
 </style>
-<script>
-function k2(){ window.location.href="https://a.helloword.pro/download/halloword.zip"; }
-</script>
+ 
 </head>
 <body>
 
